@@ -7,9 +7,7 @@
     try {
         $conexao = new PDO($dsn, $usuario, $senha);
 
-        $query = '
-            select*from tb_usuarios
-        ';
+        $query = ' select*from tb_usuarios ';
 
         $stmt = $conexao->query($query);
         $lista = $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -21,7 +19,7 @@
         echo $lista[1]->email;
 
     } catch (PDOException $e) {
-        echo 'Erro:'.$e->getCode().'Mensagem: '.$e->getMessage();
-        //erro
-
+        echo "Erro Code : .$e->getCode() ";
+        echo "Mensagem: ' .$e->getMessage()";
+        echo "Arquivo: '  .$e->getFile()";
     }
