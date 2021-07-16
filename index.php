@@ -1,17 +1,35 @@
 <?php
 
-    $dsn = 'mysql:host=localhost;dbname=php_com_pdo';
-    $usuario = 'root';
-    $senha = '';
+    if (!empty($_POST['usuario']) && !empty($_POST['senha'])) {
+        
+        $dsn = 'mysql:host=localhost;dbname=php_com_pdo';
+        $usuario = 'root';
+        $senha = '';
 
-    try {
-        $conexao = new PDO($dsn, $usuario, $senha);
+        try {
+            $conexao = new PDO($dsn, $usuario, $senha);
 
-    }catch (PDOException $e) {
+            //query
+            $query = "SELECT * from tb_usuarios where";
+            $query .= "email = '{$_POST['usuario']}' ";
+            $query .= " AND senha = '{$_POST['senha']}' ";
 
-         echo "Erro Code : .$e->getCode() ";
-         echo "Mensagem: ' .$e->getMessage()";
-         echo "Arquivo: '  .$e->getFile()";
+            echo $query;
+
+            $stmt = $conexao->query($query);
+            $usuario = $stmt->fetch();
+
+            echo '<hr/>';
+
+            echo '<pre>';
+            echo($usuario);
+            echo '</pre>';
+
+        }catch (PDOException $e) {
+
+            echo "Erro Code : .$e->getCode() ";
+            echo "Mensagem:   .$e->getMessage()";
+        }
     }
 ?>
 
@@ -21,12 +39,15 @@
         <title>Login</title>
     </head>
     <body>
-        <form action="#">
+        <form method="POST" action="./index.php">
+            <input type="text" placeholder="usuario" name="usuario">
 
-            <input type="text" placeholder="usuario">
             <br><br>
-            <input type="password" placeholder="senha">
+
+            <input type="text" placeholder="senha" name="senha">
+
             <br><br>
+
             <button type="submit">Entrar</button>
 
         </form>
