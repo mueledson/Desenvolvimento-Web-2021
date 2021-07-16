@@ -1,7 +1,13 @@
 <?php 
 
 class TarefaService{
+    private $conexao;
+    private $tarefa;
 
+    public function __construct($conexao, $tarefa){
+        $this->conexao = $conexao;
+        $this->tarefa = $tarefa;
+    }
     public function Inserir(){// CREATE / criar
         
     }
