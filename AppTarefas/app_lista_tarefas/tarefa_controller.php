@@ -7,6 +7,7 @@
     echo '<pre>';
     print_r($_POST);
     echo '</pre>';
+    
     $tarefa = new Tarefa();
     $tarefa->__set('tarefa', $_POST['tarefa']);
 
