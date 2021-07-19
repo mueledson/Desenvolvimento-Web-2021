@@ -1,8 +1,8 @@
 <?php
 
-    require "Tarefa.service.php";
-    require "conexao.php";
-    require "Tarefa.model.php";
+    require "../app_lista_tarefas/Tarefa.service.php";
+    require "../app_lista_tarefas/conexao.php";
+    require "../app_lista_tarefas/Tarefa.model.php";
 
     echo '<pre>';
     print_r($_POST);
