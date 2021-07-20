@@ -38,6 +38,7 @@
         <title>Login</title>
     </head>
     <body>
+        
         <form method="POST" action="./login.php">
 
             <input type="text" placeholder="usuario" name="usuario">
@@ -47,5 +48,6 @@
             <button type="submit">Entrar</button>
 
         </form>
+
     </body>
 </html>
