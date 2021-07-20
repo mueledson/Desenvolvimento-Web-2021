@@ -1,6 +1,6 @@
 <?php
 
-    if (!empty($_POST['usuario']) && !empty($_POST['senha'])) {
+    if (!empty($_POST[':usuario']) && !empty($_POST[':senha'])) {
         
         $dsn = 'mysql:host=localhost;dbname=php_com_pdo';
         $usuario = 'root';
@@ -11,8 +11,8 @@
 
             //query
             $query = "SELECT * from tb_usuarios where";
-            $query .= "email = '{$_POST['usuario']}' ";
-            $query .= " AND senha = '{$_POST['senha']}' ";
+            $query .= "email = '{$_POST['usuario']}'";
+            $query .= "AND senha = '{$_POST['senha']}'";
 
             echo $query;
 
@@ -23,12 +23,11 @@
 
             echo '<pre>';
             echo($usuario);
-            echo '</pre>';
+            echo '</pre>'; 
 
         }catch (PDOException $e) {
 
-            echo "Erro Code : .$e->getCode() ";
-            echo "Mensagem:   .$e->getMessage()";
+            echo 'Erro Code:' .$e->getCode(). ' Mensagem ' .$e->getMessage();
         }
     }
 ?>
@@ -39,15 +38,12 @@
         <title>Login</title>
     </head>
     <body>
-        <form method="POST" action="./index.php">
+        <form method="POST" action="./login.php">
+
             <input type="text" placeholder="usuario" name="usuario">
-
             <br><br>
-
-            <input type="text" placeholder="senha" name="senha">
-
+            <input type="password" placeholder="senha" name="senha">
             <br><br>
-
             <button type="submit">Entrar</button>
 
         </form>

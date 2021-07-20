@@ -14,8 +14,6 @@
     $conexao = new Conexao();
 
     $tarefaService = new TarefaService($conexao, $tarefa);
-
-    echo '<pre>';
-    print_r($tarefaService);
-    echo '</pre>';
+    
+    $tarefaService->Inserir();
 ?>
